@@ -36,10 +36,6 @@
     "WAREHOUSE": [
       {"type": "int", "name": "id", "keys": ["PK"]},
       {"type": "string", "name": "location", "keys": []}
-    ],
-    "STOCK": [
-      {"type": "int", "name": "stock_id", "keys": ["PK"]},
-      {"type": "int", "name": "quantity", "keys": []}
     ]
   },
   "relationships": [
@@ -77,19 +73,11 @@
     },
     {
       "a": "WAREHOUSE",
-      "b": "STOCK",
-      "a_card": "one",
-      "b_card": "one_many",
-      "identifying": true,
-      "label": "має запаси"
-    },
-    {
-      "a": "PRODUCT",
-      "b": "STOCK",
-      "a_card": "one",
+      "b": "PRODUCT",
+      "a_card": "zero_many",
       "b_card": "zero_many",
       "identifying": false,
-      "label": "зберігається як запас"
+      "label": "розміщується на складах"
     }
   ]
 }

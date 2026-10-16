@@ -64,12 +64,3 @@ CREATE TABLE "stock" (
     FOREIGN KEY ("warehouse_id") REFERENCES "warehouse" ("id") ON DELETE CASCADE,
     FOREIGN KEY ("product_id") REFERENCES "product" ("id") ON DELETE RESTRICT
 );
-```[cite: 11, 12, 21, 22]
-
-3. Збережіть файл `schema.sql`.
-4. Перевірте, чи успішно таблиці створюються в базі даних PostgreSQL, виконавши в терміналі[cite: 22]:
-   ```bash
-   python project_check/load_schema.py
-   ```[cite: 22]
-
-Скажіть, коли виконаєте це, і ми перейдемо до генерації словника даних та комітів у Git!

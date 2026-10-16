@@ -19,6 +19,10 @@
       {"type": "int", "name": "id", "keys": ["PK"]},
       {"type": "string", "name": "title", "keys": []}
     ],
+    "SUPPLIER": [
+      {"type": "int", "name": "id", "keys": ["PK"]},
+      {"type": "string", "name": "name", "keys": []}
+    ],
     "PRODUCT": [
       {"type": "int", "name": "id", "keys": ["PK"]},
       {"type": "string", "name": "name", "keys": []},
@@ -46,6 +50,14 @@
       "b_card": "zero_many",
       "identifying": false,
       "label": "містить товари"
+    },
+    {
+      "a": "SUPPLIER",
+      "b": "PRODUCT",
+      "a_card": "one",
+      "b_card": "zero_many",
+      "identifying": false,
+      "label": "постачає"
     },
     {
       "a": "CUSTOMER",

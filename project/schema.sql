@@ -21,13 +21,21 @@ CREATE TABLE "category" (
     PRIMARY KEY ("id")
 );
 
+CREATE TABLE "supplier" (
+    "id" integer GENERATED ALWAYS AS IDENTITY,
+    "name" text NOT NULL,
+    PRIMARY KEY ("id")
+);
+
 CREATE TABLE "product" (
     "id" integer GENERATED ALWAYS AS IDENTITY,
     "name" text NOT NULL,
     "price" numeric(12,2) NOT NULL,
     "category_id" integer NOT NULL,
+    "supplier_id" integer NOT NULL,
     PRIMARY KEY ("id"),
-    FOREIGN KEY ("category_id") REFERENCES "category" ("id") ON DELETE RESTRICT
+    FOREIGN KEY ("category_id") REFERENCES "category" ("id") ON DELETE RESTRICT,
+    FOREIGN KEY ("supplier_id") REFERENCES "supplier" ("id") ON DELETE RESTRICT
 );
 
 CREATE TABLE "orders" (

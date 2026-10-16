@@ -1,5 +1,95 @@
 {
-  "entities": {},
-  "relationships": [],
-  "hierarchies": []
+  "entities": {
+    "CUSTOMER": [
+      {"type": "int", "name": "id", "keys": ["PK"]},
+      {"type": "string", "name": "email", "keys": ["UK"]},
+      {"type": "string", "name": "phone", "keys": []},
+      {"type": "string[]", "name": "alt_phones", "keys": []},
+      {
+        "type": "composite",
+        "name": "address",
+        "keys": [],
+        "parts": [
+          {"type": "string", "name": "city"},
+          {"type": "string", "name": "street"}
+        ]
+      }
+    ],
+    "CATEGORY": [
+      {"type": "int", "name": "id", "keys": ["PK"]},
+      {"type": "string", "name": "title", "keys": []}
+    ],
+    "PRODUCT": [
+      {"type": "int", "name": "id", "keys": ["PK"]},
+      {"type": "string", "name": "name", "keys": []},
+      {"type": "decimal", "name": "price", "keys": []}
+    ],
+    "ORDERS": [
+      {"type": "int", "name": "id", "keys": ["PK"]},
+      {"type": "date", "name": "order_date", "keys": []},
+      {"type": "string", "name": "status", "keys": []}
+    ],
+    "ORDER_ITEM": [
+      {"type": "int", "name": "item_no", "keys": ["PK"]},
+      {"type": "int", "name": "quantity", "keys": []}
+    ],
+    "WAREHOUSE": [
+      {"type": "int", "name": "id", "keys": ["PK"]},
+      {"type": "string", "name": "location", "keys": []}
+    ],
+    "STOCK": [
+      {"type": "int", "name": "stock_id", "keys": ["PK"]},
+      {"type": "int", "name": "quantity", "keys": []}
+    ]
+  },
+  "relationships": [
+    {
+      "a": "CATEGORY",
+      "b": "PRODUCT",
+      "a_card": "one",
+      "b_card": "zero_many",
+      "identifying": false,
+      "label": "містить товари"
+    },
+    {
+      "a": "CUSTOMER",
+      "b": "ORDERS",
+      "a_card": "one",
+      "b_card": "zero_many",
+      "identifying": false,
+      "label": "робить замовлення"
+    },
+    {
+      "a": "ORDERS",
+      "b": "ORDER_ITEM",
+      "a_card": "one",
+      "b_card": "one_many",
+      "identifying": true,
+      "label": "складається з позицій"
+    },
+    {
+      "a": "PRODUCT",
+      "b": "ORDER_ITEM",
+      "a_card": "one",
+      "b_card": "zero_many",
+      "identifying": false,
+      "label": "представлений у позиції"
+    },
+    {
+      "a": "WAREHOUSE",
+      "b": "STOCK",
+      "a_card": "one",
+      "b_card": "one_many",
+      "identifying": true,
+      "label": "має запаси"
+    },
+    {
+      "a": "PRODUCT",
+      "b": "STOCK",
+      "a_card": "one",
+      "b_card": "zero_many",
+      "identifying": false,
+      "label": "зберігається як запас"
+    }
+  ]
 }
